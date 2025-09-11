@@ -6,6 +6,8 @@ from hyperparameter_tuner import tune_hyperparameters  # Custom module for tunin
 from sklearn.model_selection import train_test_split  # For splitting data into training and testing sets
 from sklearn.metrics import classification_report     # For evaluating model performance
 import joblib  # For saving the trained model (can be replaced with torch or tf saving methods)
+from automl_pipeline.data_loader import load_data
+
 
 # Function to load data from the given path
 def load_data(data_path):
