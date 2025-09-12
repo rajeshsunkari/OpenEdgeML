@@ -1,7 +1,7 @@
 # Import necessary libraries
 import argparse  # For parsing command-line arguments
 import os        # For file path operations
-from model_selector import train_and_select_model  # Custom module to select appropriate model
+from automl_pipeline.model_selector import train_and_select_model  # Custom module to select appropriate model
 #from hyperparameter_tuner import tune_hyperparameters  # Custom module for tuning hyperparameters
 from sklearn.model_selection import train_test_split  # For splitting data into training and testing sets
 from sklearn.metrics import classification_report     # For evaluating model performance
