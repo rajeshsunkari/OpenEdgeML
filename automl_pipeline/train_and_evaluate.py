@@ -6,14 +6,28 @@ from automl_pipeline.model_selector import train_and_select_model  # Custom modu
 from sklearn.model_selection import train_test_split  # For splitting data into training and testing sets
 from sklearn.metrics import classification_report     # For evaluating model performance
 import joblib  # For saving the trained model (can be replaced with torch or tf saving methods)
-from data_loader import load_data
+from automl_pipeline.data_loader import load_data
+import pandas as pd
 
 
 # Function to load data from the given path
 def load_data(data_path):
     # Placeholder function: implement actual data loading logic here
-    # Example: pandas.read_csv for tabular data, or image loader for vision tasks
-    raise NotImplementedError("Data loading not implemented.")
+    
+    """
+    Loads data from a CSV file and splits it into features (X) and target (y).
+    Assumes the target column is named 'target'.
+    """
+    df = pd.read_csv(data_path)
+
+    if 'target' not in df.columns:
+        raise ValueError("Expected a 'target' column in the dataset.")
+
+    X = df.drop(columns=['target'])
+    y = df['target']
+    return X, y
+
+    #raise NotImplementedError("Data loading not implemented.")
 
 # Function to train the model using training data
 def train_model(model, X_train, y_train):
