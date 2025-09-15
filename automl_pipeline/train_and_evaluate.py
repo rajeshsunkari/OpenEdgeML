@@ -20,9 +20,11 @@ def load_data(data_path):
     """
     df = pd.read_csv(data_path)
 
+    # Check if the expected target column 'target' exists
     if 'target' not in df.columns:
         raise ValueError("Expected a 'target' column in the dataset.")
 
+    # Separate features and target
     X = df.drop(columns=['target'])
     y = df['target']
     return X, y
