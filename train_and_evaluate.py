@@ -78,6 +78,12 @@ if __name__ == "__main__":
     parser.add_argument("--task", type=str, required=True, help="Task type (e.g., classification, regression).")
     parser.add_argument("--output_path", type=str, default="trained_model.pkl", help="Path to save the trained model.")
     
+    
+    # For testing: use default values if not provided
+    import sys
+    if len(sys.argv) == 1:
+        sys.argv.extend(['--data_path', 'academic Stress level - maintainance 1.csv', '--task', 'classification'])
+
     # Parse arguments and run main function
     args = parser.parse_args()
     main(args)
