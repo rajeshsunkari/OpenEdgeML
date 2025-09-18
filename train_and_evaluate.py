@@ -8,6 +8,8 @@ from sklearn.metrics import classification_report     # For evaluating model per
 import joblib  # For saving the trained model (can be replaced with torch or tf saving methods)
 from automl_pipeline.data_loader import load_data
 import pandas as pd
+from automl_pipeline.model_selector import train_and_select_model
+
 
 
 # Function to load data from the given path
@@ -55,11 +57,14 @@ def main(args):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)  # Split data
 
     # Select the model based on task type
-    model = select_model(task=args.task)
+    # model = select_model(task=args.task)
+    model = train_and_select_model()
+
+    
 
     # Tune hyperparameters using training data
-    best_params = tune_hyperparameters(model, X_train, y_train)
-    model.set_params(**best_params)  # Apply best hyperparameters to model
+    #best_params = tune_hyperparameters(model, X_train, y_train)
+    #model.set_params(**best_params)  # Apply best hyperparameters to model
 
     # Train the model
     trained_model = train_model(model, X_train, y_train)
