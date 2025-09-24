@@ -9,6 +9,8 @@ import joblib  # For saving the trained model (can be replaced with torch or tf 
 from automl_pipeline.data_loader import load_data
 import pandas as pd
 from automl_pipeline.model_selector import train_and_select_model
+import numpy as np
+import matplotlib.pyplot as plt 
 
 
 
